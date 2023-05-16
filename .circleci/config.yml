@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  scarb_version:
+    type: string
+    default: 0.1.0
+
 jobs:
   build:
     docker:
@@ -9,12 +14,10 @@ jobs:
       - run:
           name: Setup Scarb
           command: |
-            wget https://github.com/software-mansion/scarb/releases/download/$SCARB_VERSION/scarb-$SCARB_VERSION-x86_64-unknown-linux-gnu.tar.gz
-            tar -xvzf scarb-$SCARB_VERSION-x86_64-unknown-linux-gnu.tar.gz
-            echo 'export PATH="$PATH:$CIRCLE_WORKING_DIRECTORY/scarb-$SCARB_VERSION-x86_64-unknown-linux-gnu/bin"' >> "$BASH_ENV"
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
+            source "$BASH_ENV"
+            curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | bash -s -- -v << pipeline.parameters.scarb_version >>
       - run: scarb build
-    environment:
-      SCARB_VERSION: v0.1.0
 
 workflows:
   build:
