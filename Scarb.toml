@@ -1,5 +1,14 @@
 [package]
-name = "quaireaux_utils"
+name = "new_syntax_test_contract"
 version = "0.1.0"
-description = "Utils library used by other Quaireaux crates"
-homepage = "https://github.com/keep-starknet-strange/quaireaux/tree/main/data_structures"
+
+[lib]
+casm = true
+sierra = true
+
+[[target.starknet-contract]]
+casm = true
+sierra = true
+
+[dependencies]
+starknet = "2.0.2"

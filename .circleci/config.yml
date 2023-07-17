@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   scarb_version:
     type: string
-    default: 0.1.0
+    default: 0.5.2
 
 jobs:
   build:
