@@ -1,5 +1,5 @@
 [package]
-name = "new_syntax_test_contract"
+name = "hello_world"
 version = "0.1.0"
 
 [lib]
@@ -11,4 +11,5 @@ casm = true
 sierra = true
 
 [dependencies]
-starknet = "2.0.2"
+starknet = "2.1.1"
+openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.7.0-rc.0" }

@@ -1,9 +1,9 @@
 version: 2.1
 
-parameters:
-  scarb_version:
-    type: string
-    default: 0.5.2
+# parameters:
+#   scarb_version:
+#     type: string
+#     default: 0.5.2
 
 jobs:
   build:
@@ -11,13 +11,13 @@ jobs:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      - run:
-          name: Setup Scarb
-          command: |
-            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
-            source "$BASH_ENV"
-            curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | bash -s -- -v << pipeline.parameters.scarb_version >>
-      - run: scarb build
+      # - run:
+      #     name: Setup Scarb
+      #     command: |
+      #       echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
+      #       source "$BASH_ENV"
+      #       curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | bash -s -- -v << pipeline.parameters.scarb_version >>
+      # - run: scarb build
 
 workflows:
   build:
