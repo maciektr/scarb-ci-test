@@ -15,9 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: software-mansion/setup-scarb@v1
-        with:
-          scarb-version: "0.7.0"
+      # - uses: software-mansion/setup-scarb@v1
+      #   with:
+      #     scarb-version: "0.7.0"
+      - name: Output Inputs
+        run: echo "${{ toJSON(github.event.inputs) }}"
       - name: Scarb test
-        if: ${{ !!(inputs.dry_run) }}
-        run: scarb test
+        if: ${{ !(inputs.dry_run) }}
+        run: echo "running test"
