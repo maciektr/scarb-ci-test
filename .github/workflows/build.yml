@@ -4,22 +4,16 @@ on:
   merge_group:
   pull_request:
   workflow_dispatch:
-    inputs:
-      dry_run:
-        description: "Dry run"
-        type: boolean
-        default: true
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - uses: software-mansion/setup-scarb@v1
-      #   with:
-      #     scarb-version: "0.7.0"
-      - name: Output Inputs
-        run: echo "${{ toJSON(github.event.inputs) }}"
-      - name: Scarb test
-        if: ${{ !(inputs.dry_run) }}
-        run: echo "running test"
+      - uses: software-mansion/setup-scarb@v1
+        with:
+          scarb-version: "2.4.0"
+      - name: Scarb new
+        run: scarb new pkg
+      - name: Output
+        run: cat pkg/Scarb.toml
