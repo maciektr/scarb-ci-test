@@ -12,4 +12,3 @@ sierra = true
 
 [dependencies]
 starknet = "2.1.1"
-openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.7.0-rc.0" }
