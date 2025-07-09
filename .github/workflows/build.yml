@@ -10,10 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: software-mansion/setup-scarb@v1
-        with:
-          scarb-version: "2.4.0"
-      - name: Cat
-        run: cat src/lib.cairo
-      - name: Scarb Cairo Run
-        run: scarb cairo-run
+      - uses: software-mansion/setup-scarb@be0d6b396aaf744ab41b2ecc00dcdaeb8d93e759
+      - run: tree .
+      - name: Scarb build
+        run: scarb build
